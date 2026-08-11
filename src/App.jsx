@@ -8,12 +8,15 @@ import AddProductPage from "./pages/AddProductPage";
 
 function App() {
   return (
+    <>
+    <Navbar/>
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/products" element={<ProductListPage />} />
       <Route path="/products/:id" element={<ProductPage />} />
       <Route path="/add-product" element={<AddProductPage />} />
     </Routes>
+    </>
   );
 }
 
