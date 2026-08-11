@@ -125,26 +125,6 @@
   transform: translateY(-2px);
 }
 
-
-/*HERO IMAGE STYLES*/
-
-.hero-image-wrapper {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hero-image {
-  width: 100%;
-  max-width: 560px;
-  height: 560px;
-  object-fit: cover;
-  border-radius: 8px;
-  display: block;
-}
-
-
 /* ABOUT SECTION STYLES */
 
 .about-section {
