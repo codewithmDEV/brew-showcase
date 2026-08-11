@@ -1,0 +1,62 @@
+{
+  "store_info": [
+    {
+      "id": 1,
+      "name": "Brew Showcase",
+      "description": "Discover and manage our collection of premium coffee products.",
+      "phone_number": "+254 700 000 000"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Vanilla Bean",
+      "description": "Medium roast coffee with a smooth vanilla flavor.",
+      "origin": "Colombia",
+      "price": 10,
+      "category": "Medium Roast",
+      "stock": 25,
+      "image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800"
+    },
+    {
+      "id": 2,
+      "name": "House Blend",
+      "description": "Dark roast coffee with a rich and bold flavor.",
+      "origin": "Vietnam",
+      "price": 12,
+      "category": "Dark Roast",
+      "stock": 18,
+      "image": "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=800"
+    },
+    {
+      "id": 3,
+      "name": "Ethiopian Sunrise",
+      "description": "Bright and aromatic coffee with fruity notes.",
+      "origin": "Ethiopia",
+      "price": 14,
+      "category": "Light Roast",
+      "stock": 20,
+      "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=800"
+    },
+    {
+      "id": 4,
+      "name": "Mocha Roast",
+      "description": "A rich coffee blend with smooth chocolate undertones.",
+      "origin": "Kenya",
+      "price": 13,
+      "category": "Medium Roast",
+      "stock": 15,
+      "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800"
+    },
+    {
+      "id": 5,
+      "name": "French Roast",
+      "description": "Deep, smoky and full-bodied coffee for strong coffee lovers.",
+      "origin": "Brazil",
+      "price": 11,
+      "category": "Dark Roast",
+      "stock": 30,
+      "image": "https://images.unsplash.com/photo-1498804103079-a6351b050096?w=800"
+    }
+  ]
+}
