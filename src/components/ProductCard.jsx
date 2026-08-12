@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./ProductCard.module.css";
 
@@ -7,10 +8,14 @@ function ProductCard({ product }) {
   return (
     <div className={styles.productCard}>
       <h3 className={styles.name}>{product.name}</h3>
-      <p><strong>Origin:</strong> {product.origin}</p>
-      <p><strong>Description:</strong> {product.description}</p>
+      <p>
+        <strong>Origin:</strong> {product.origin}
+      </p>
+      <p>
+        <strong>Description:</strong> {product.description}
+      </p>
       <p className={styles.price}>
-        <strong>Price:</strong> KES {Number(product.price * 130).toLocaleString("en-KE")}
+        <strong>Price:</strong> ${Number(product.price).toFixed(2)}
       </p>
       <Link to={`/products/${product.id}`} className={styles.viewDetailsBtn}>
         View Details / Edit
