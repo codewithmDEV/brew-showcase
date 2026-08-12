@@ -6,8 +6,6 @@ function ProductPage() {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  // Edit mode state
   const [isEditing, setIsEditing] = useState(false);
   const [editPrice, setEditPrice] = useState("");
   const [updateMessage, setUpdateMessage] = useState("");
@@ -100,7 +98,7 @@ function ProductPage() {
           </div>
           <button
             type="submit"
-            style={{ marginRight: "100px", marginTop: "100px" }}
+            style={{ marginRight: "10px", marginTop: "10px" }}
           >
             Save Price
           </button>
