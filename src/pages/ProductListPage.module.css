@@ -1,0 +1,32 @@
+.page {
+  background-color: #f5ede1;
+  min-height: 100vh;
+  padding: 24px 40px;
+}
+
+.title {
+  color: #4a2c2a;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.searchWrapper {
+  margin-bottom: 20px;
+}
+
+.statusText {
+  color: #6b4a3e;
+  font-style: italic;
+}
+
+.errorText {
+  color: #8b1e1e;
+  font-weight: bold;
+}
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}

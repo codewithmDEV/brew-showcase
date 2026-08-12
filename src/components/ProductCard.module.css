@@ -1,0 +1,30 @@
+.productCard {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  margin: 16px;
+  background-color: #ccc;
+}
+
+.productCard:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.viewDetailsBtn {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 8px 16px;
+  background-color: #8b3a3a;
+  color: #fffaf5;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.viewDetailsBtn:hover {
+  background-color: #6b2c2c;
+}

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "./SearchBar.module.css";
 
 function SearchBar({ onSearch }) {
     const [searchTerm, setSearchTerm] = useState("");
@@ -10,6 +11,7 @@ function SearchBar({ onSearch }) {
     return (
         <input
         type="text"
+        className={styles.searchInput}
         value={searchTerm}
         onChange={(e) => {
             setSearchTerm(e.target.value);

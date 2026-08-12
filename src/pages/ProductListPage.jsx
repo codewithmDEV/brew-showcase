@@ -1,12 +1,13 @@
-import { useState, useEffect } from "react";
-import { useProducts } from "../hooks/useProducts";
+import { useState, useEffect, useContext } from "react";
+import { ProductContext } from "../context/ProductContext";
 import SearchBar from "../components/SearchBar";
 import ProductCard from "../components/ProductCard";
+import styles from "./ProductListPage.module.css";
 
 function ProductListPage() {
-    const { products, loading, error } = useProducts();
+    const { products, loading, error } = useContext(ProductContext);
     const [filteredProducts, setFilteredProducts] = useState([]);
-    
+
     useEffect(() => {
         setFilteredProducts(products);
     }, [products]);
@@ -16,23 +17,26 @@ function ProductListPage() {
             product.name.toLowerCase().includes(searchTerm.toLowerCase())
         );
         setFilteredProducts(filtered);
-    } 
+    }
+
     return (
-    <div>
-        <h1>Product List</h1>
-        <SearchBar onSearch={handleSearch} />
-        {loading && <p>Loading...</p>}
-        {error && <p>Error: {error}</p>}
-        <div className="product-list">
-            {filteredProducts.length > 0 ? (
-                filteredProducts.map((product) => (
-                    <ProductCard key={product.id} product={product} />
-                ))
-            ) : (
-                <p>No products found.</p>
-            )}
+        <div className={styles.page}>
+            <h1 className={styles.title}>Product List</h1>
+            <div className={styles.searchWrapper}>
+                <SearchBar onSearch={handleSearch} />
+            </div>
+            {loading && <p className={styles.statusText}>Loading...</p>}
+            {error && <p className={styles.errorText}>Error: {error}</p>}
+            <div className={styles.productGrid}>
+                {filteredProducts.length > 0 ? (
+                    filteredProducts.map((product) => (
+                        <ProductCard key={product.id} product={product} />
+                    ))
+                ) : (
+                    <p className={styles.statusText}>No products found.</p>
+                )}
+            </div>
         </div>
-    </div>
-);
+    );
 }
 export default ProductListPage;
