@@ -100,7 +100,7 @@ function ProductPage() {
           </div>
           <button
             type="submit"
-            style={{ marginRight: "10px", marginTop: "10px" }}
+            style={{ marginRight: "100px", marginTop: "100px" }}
           >
             Save Price
           </button>
