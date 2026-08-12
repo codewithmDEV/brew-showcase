@@ -5,18 +5,19 @@ import LandingPage from "./pages/LandingPage";
 import ProductListPage from "./pages/ProductListPage";
 import ProductPage from "./pages/ProductPage";
 import AddProductPage from "./pages/AddProductPage";
+import ProductContextProvider from "./context/ProductContext";
 
 function App() {
   return (
-    <>
-    <Navbar/>
-    <Routes>
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/products" element={<ProductListPage />} />
-      <Route path="/products/:id" element={<ProductPage />} />
-      <Route path="/add-product" element={<AddProductPage />} />
-    </Routes>
-    </>
+    <ProductContextProvider>
+      <Navbar/>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/products" element={<ProductListPage />} />
+        <Route path="/products/:id" element={<ProductPage />} />
+        <Route path="/add-product" element={<AddProductPage />} />
+      </Routes>
+    </ProductContextProvider>
   );
 }
 
