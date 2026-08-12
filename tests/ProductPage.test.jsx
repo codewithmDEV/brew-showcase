@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { MemoryRouter, Routes, Route } from "react-router-dom";
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import ProductPage from "./ProductPage";
+import ProductPage from "../src/pages/ProductPage";
 
 global.fetch = vi.fn();
 describe("ProductPage Component", () => {
