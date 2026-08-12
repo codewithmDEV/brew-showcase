@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 
 function ProductPage() {
@@ -10,6 +10,7 @@ function ProductPage() {
   const [editPrice, setEditPrice] = useState("");
   const [updateMessage, setUpdateMessage] = useState("");
 
+  // Fetch individual product details from json-server
   useEffect(() => {
     const fetchProduct = async () => {
       setLoading(true);
@@ -32,6 +33,7 @@ function ProductPage() {
     fetchProduct();
   }, [id]);
 
+  // Handle PATCH request to update price in db.json
   const handlePatchPrice = async (e) => {
     e.preventDefault();
     setUpdateMessage("");
@@ -59,9 +61,10 @@ function ProductPage() {
     }
   };
 
-  if (loading) return <p>Loading product details...</p>;
-  if (error) return <p>Error: {error}</p>;
-  if (!product) return <p>Product not found.</p>;
+  if (loading)
+    return <p style={{ padding: "20px" }}>Loading product details...</p>;
+  if (error) return <p style={{ padding: "20px" }}>Error: {error}</p>;
+  if (!product) return <p style={{ padding: "20px" }}>Product not found.</p>;
 
   return (
     <main className="product-page" style={{ padding: "20px" }}>
