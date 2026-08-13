@@ -10,7 +10,6 @@ function ProductPage() {
   const [editPrice, setEditPrice] = useState("");
   const [updateMessage, setUpdateMessage] = useState("");
 
-  // Fetch individual product details from json-server
   useEffect(() => {
     const fetchProduct = async () => {
       setLoading(true);
@@ -33,7 +32,6 @@ function ProductPage() {
     fetchProduct();
   }, [id]);
 
-  // Handle PATCH request to update price in db.json
   const handlePatchPrice = async (e) => {
     e.preventDefault();
     setUpdateMessage("");
