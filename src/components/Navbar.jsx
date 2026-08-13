@@ -6,9 +6,9 @@ function Navbar() {
     <nav className={styles.navbar}>
       <div className={styles.navContainer}>
 
-        <Link to="/" className={styles.brand}>
+        <span className={styles.brand}>
           Brew Showcase
-        </Link>
+        </span>
 
         <div className={styles.links}>
           <Link to="/" className={styles.link}>
