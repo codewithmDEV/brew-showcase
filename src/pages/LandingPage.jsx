@@ -2,80 +2,61 @@ import { Link } from "react-router-dom";
 
 function LandingPage() {
   return (
-    <main className="landing-page">
-      <section className="hero-section">
+    <main>
+
+      {/* FIRST SECTION / HERO */}
+      <section className="hero">
+
         <div className="hero-content">
-          <p className="hero-eyebrow">
-            WELCOME TO BREW SHOWCASE
+          <p className="hero-tagline">
+            FRESHLY BREWED • PERFECTLY CRAFTED
           </p>
 
           <h1>
             Discover Your
             <br />
-            Perfect Brew.
+            Perfect Brew
           </h1>
 
-          <p className="hero-description">
-            Explore our collection of carefully selected coffee products.
-            Find your favorite flavors, discover new origins, and enjoy
-            coffee made for every moment.
-          </p>
-
-          <div className="hero-buttons">
-            <Link to="/products" className="primary-button">
-              Explore Products
-            </Link>
-
-            <Link to="/add-product" className="secondary-button">
-              Add Product
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="about-section">
-        <div className="about-content">
-          <p className="section-label">OUR COLLECTION</p>
-
-          <h2>Great coffee starts with great beans.</h2>
-
           <p>
-            Brew Showcase brings together coffee products from different
-            origins and roast profiles. Whether you prefer a light,
-            medium, or dark roast, discover something that suits your taste.
+            Explore our collection of carefully selected
+            coffees made for every coffee lover.
           </p>
 
-          <Link to="/products" className="collection-link">
-            Explore our collection →
+          <Link to="/products" className="hero-button">
+            Explore Products
           </Link>
         </div>
+
+        {/* TWO COFFEE IMAGES */}
+        <div className="hero-images">
+
+          <img
+            src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085"
+            alt="Freshly brewed coffee"
+            className="hero-image main-image"
+          />
+
+          <img
+            src="https://images.unsplash.com/photo-1509042239860-f550ce710b93"
+            alt="Cup of coffee"
+            className="hero-image secondary-image"
+          />
+
+        </div>
+
       </section>
 
-      <section className="features-section">
-        <div className="feature">
-          <div className="feature-number">01</div>
-          <h3>Quality Coffee</h3>
-          <p>
-            Carefully selected products from trusted coffee origins.
-          </p>
-        </div>
+      {/* OTHER SECTIONS CAN GO BELOW */}
+      <section className="about">
+        <h2>Why Choose Brew Showcase?</h2>
 
-        <div className="feature">
-          <div className="feature-number">02</div>
-          <h3>Discover Flavors</h3>
-          <p>
-            Explore different roast levels, origins, and unique flavors.
-          </p>
-        </div>
-
-        <div className="feature">
-          <div className="feature-number">03</div>
-          <h3>Easy Management</h3>
-          <p>
-            Manage products, prices, and stock through our admin portal.
-          </p>
-        </div>
+        <p>
+          We bring together quality coffee products for
+          coffee lovers who appreciate great taste.
+        </p>
       </section>
+
     </main>
   );
 }
