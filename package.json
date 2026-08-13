@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "start":"vite",
+    "start": "concurrently \"npm run dev\" \"npm run server\"",
     "server": "json-server db.json --port 3000",
     "build": "vite build",
     "lint": "eslint .",
@@ -13,6 +13,7 @@
     "test": "vitest"
   },
   "dependencies": {
+    "concurrently": "^10.0.4",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-router-dom": "^7.18.2"
