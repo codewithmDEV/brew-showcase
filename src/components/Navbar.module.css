@@ -1,0 +1,89 @@
+.navbar {
+  width: 100%;
+  background: #f8f1e5;
+  border-bottom: 1px solid #e3d2bd;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+.navContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 75px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Brand */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  text-decoration: none;
+  color: #6b1e2e;
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.brand:hover {
+  color: #4e1420;
+}
+
+/* Coffee beans beside the logo */
+
+.bean {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Navigation */
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.link {
+  text-decoration: none;
+  color: #4a3428;
+  font-size: 16px;
+  font-weight: 600;
+
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  color: #8b2f3f;
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+  .navbar {
+    padding: 0 20px;
+  }
+
+  .navContainer {
+    flex-direction: column;
+    gap: 15px;
+    padding: 18px 0;
+  }
+
+  .links {
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .brand {
+    font-size: 22px;
+  }
+}
