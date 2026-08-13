@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import ProductForm from '../components/ProductForm'
+import styles from './AddProductPage.module.css'
 
 function AddProductPage() {
   const [message, setMessage] = useState('')
@@ -29,12 +30,24 @@ function AddProductPage() {
   }
 
   return (
-    <main>
-      <h1>Add Product</h1>
+    <main className={styles.page}>
+      <div className={styles.container}>
+        <h1 className={styles.title}>Add Product</h1>
 
-      <ProductForm onAddProduct={handleAddProduct} />
+        <p className={styles.subtitle}>
+          Add a new coffee product to the Brew Showcase collection.
+        </p>
 
-      {message && <p>{message}</p>}
+        <div className={styles.formCard}>
+          <ProductForm onAddProduct={handleAddProduct} />
+
+          {message && (
+            <p className={styles.message}>
+              {message}
+            </p>
+          )}
+        </div>
+      </div>
     </main>
   )
 }
