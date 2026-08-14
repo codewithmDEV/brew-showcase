@@ -3,17 +3,16 @@ import { useParams, Link } from "react-router-dom";
 
 function ProductPage() {
   const { id } = useParams();
-  const [product, setProduct] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [product, setProduct] =useState(null);
+  const [loading, setLoading] =useState(true);
   const [error, setError] = useState(null);
-  const [isEditing, setIsEditing] = useState(false);
+  const [isEditing, setIsEditing] =useState(false);
   const [editPrice, setEditPrice] = useState("");
-  const [updateMessage, setUpdateMessage] = useState("");
+  const [updateMessage, setUpdateMessage] =useState("");
 
   useEffect(() => {
     const fetchProduct = async () => {
-      setLoading(true);
-      setError(null);
+      setLoading(true); setError(null);
       try {
         const response = await fetch(`http://localhost:3000/products/${id}`);
         if (!response.ok) {
@@ -31,7 +30,6 @@ function ProductPage() {
 
     fetchProduct();
   }, [id]);
-
   const handlePatchPrice = async (e) => {
     e.preventDefault();
     setUpdateMessage("");
@@ -58,35 +56,32 @@ function ProductPage() {
       setUpdateMessage("Failed to update price.");
     }
   };
-
   if (loading)
     return <p style={{ padding: "20px" }}>Loading product details...</p>;
   if (error) return <p style={{ padding: "20px" }}>Error: {error}</p>;
   if (!product) return <p style={{ padding: "20px" }}>Product not found.</p>;
 
   return (
-    <main className="product-page" style={{ padding: "20px" }}>
+    <main
+      className="product-page"
+      style={{ padding: "50px", color: "#4a2c2a", backgroundColor: "#e7d3b4" }}
+    >
       <Link to="/products">← Back to Products</Link>
-
       <h1>{product.name}</h1>
       <p>
-        <strong>Origin:</strong> {product.origin}
-      </p>
+        <strong>Origin:</strong> {product.origin}</p>
       <p>
-        <strong>Description:</strong> {product.description}
-      </p>
+        <strong>Description:</strong> {product.description}</p>
       <p>
-        <strong>Current Price:</strong> ${Number(product.price).toFixed(2)}
-      </p>
+        <strong>Current Price:</strong> KES{Number(product.price).toFixed(2)} </p>
 
       {updateMessage && <p className="status-message">{updateMessage}</p>}
-
       {!isEditing ? (
         <button onClick={() => setIsEditing(true)}>Edit Price</button>
       ) : (
         <form onSubmit={handlePatchPrice} style={{ marginTop: "15px" }}>
           <div>
-            <label htmlFor="edit-price">New Price ($): </label>
+            <label htmlFor="edit-price">New Price (KES): </label>
             <input
               id="edit-price"
               type="number"
@@ -96,14 +91,17 @@ function ProductPage() {
               onChange={(e) => setEditPrice(e.target.value)}
               required
             />
-          </div>
+          </div> 
           <button
             type="submit"
-            style={{ marginRight: "10px", marginTop: "10px" }}
+            style={{marginRight: "10px", marginTop: "10px", backgroundColor: "#8b3a3a",
+            }}
           >
             Save Price
           </button>
-          <button type="button" onClick={() => setIsEditing(false)}>
+          <button
+            type="button" onClick={() => setIsEditing(false)} style={{ backgroundColor: "#8b3a3a" }}
+          >
             Cancel
           </button>
         </form>
