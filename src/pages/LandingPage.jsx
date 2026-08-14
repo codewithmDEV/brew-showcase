@@ -4,7 +4,7 @@ function LandingPage() {
   return (
     <main>
 
-      /* FIRST SECTION / HERO */
+      {/* FIRST SECTION / HERO */}
       <section className="hero">
 
         <div className="hero-content">
@@ -28,7 +28,7 @@ function LandingPage() {
           </Link>
         </div>
 
-        /* TWO COFFEE IMAGES */
+        {/* TWO COFFEE IMAGES */}
         <div className="hero-images">
 
           <img
@@ -47,7 +47,7 @@ function LandingPage() {
 
       </section>
 
-      /* SECTION 2 */
+      {/* SECTION 2 */}
       <section className="about">
         <h2>Why Choose Brew Showcase?</h2>
 
