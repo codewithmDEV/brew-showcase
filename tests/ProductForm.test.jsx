@@ -87,6 +87,6 @@ describe('ProductForm', () => {
     expect(nameInput).toHaveValue('')
     expect(descriptionInput).toHaveValue('')
     expect(originInput).toHaveValue('')
-    expect(priceInput).toHaveValue('')
+    expect(priceInput).toHaveValue(null)
   })
 })
