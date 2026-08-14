@@ -47,7 +47,7 @@ function LandingPage() {
 
       </section>
 
-      {/* OTHER SECTIONS CAN GO BELOW */}
+      {/* SECTION 2 */}
       <section className="about">
         <h2>Why Choose Brew Showcase?</h2>
 
