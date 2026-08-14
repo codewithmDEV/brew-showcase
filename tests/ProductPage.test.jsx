@@ -33,7 +33,7 @@ describe("ProductPage Component", () => {
     await waitFor(() => {
       expect(screen.getByText("Vanilla Bean")).toBeInTheDocument();
       expect(screen.getByText("Colombia")).toBeInTheDocument();
-      expect(screen.getByText("$10.00")).toBeInTheDocument();
+      expect(screen.getByText("KES10.00")).toBeInTheDocument();
     });
   });
 
@@ -62,8 +62,8 @@ describe("ProductPage Component", () => {
 
     fireEvent.click(screen.getByText("Edit Price"));
 
-    const priceInput = screen.getByLabelText("New Price ($):");
-    fireEvent.change(priceInput, { target: { value: "15" } });
+    const priceInput = screen.getByLabelText("New Price (KES):");
+    fireEvent.change(priceInput, { target: { value: "15.00" } });
 
     fireEvent.click(screen.getByText("Save Price"));
 
@@ -71,7 +71,7 @@ describe("ProductPage Component", () => {
       expect(
         screen.getByText("Price updated successfully!"),
       ).toBeInTheDocument();
-      expect(screen.getByText("$15.00")).toBeInTheDocument();
+      expect(screen.getByText("KES15.00")).toBeInTheDocument();
     });
 
     expect(fetch).toHaveBeenLastCalledWith(
