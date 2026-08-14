@@ -10,7 +10,7 @@ function ProductCard({ product }) {
       <p><strong>Origin:</strong> {product.origin}</p>
       <p><strong>Description:</strong> {product.description}</p>
       <p className={styles.price}>
-        <strong>Price:</strong> KES {Number(product.price * 130).toLocaleString("en-KE")}
+        <strong>Price:</strong> KES {Number(product.price).toLocaleString("en-KE")}
       </p>
       <Link to={`/products/${product.id}`} className={styles.viewDetailsBtn}>
         View Details / Edit
