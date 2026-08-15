@@ -14,6 +14,7 @@ describe('ProductForm', () => {
     expect(screen.getByLabelText(/description/i)).toBeInTheDocument()
     expect(screen.getByLabelText(/origin/i)).toBeInTheDocument()
     expect(screen.getByLabelText(/price/i)).toBeInTheDocument()
+
     expect(
       screen.getByRole('button', { name: /submit/i })
     ).toBeInTheDocument()
