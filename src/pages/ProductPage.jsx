@@ -4,7 +4,6 @@ import { useParams, Link } from "react-router-dom";
 function ProductPage() {
   const { id } = useParams();
   const [product, setProduct] =useState(null);
-  const [loading, setLoading] =useState(true);
   const [error, setError] = useState(null);
   const [isEditing, setIsEditing] =useState(false);
   const [editPrice, setEditPrice] = useState("");
@@ -12,7 +11,7 @@ function ProductPage() {
 
   useEffect(() => {
     const fetchProduct = async () => {
-      setLoading(true); setError(null);
+       setError(null);
       try {
         const response = await fetch(`http://localhost:3000/products/${id}`);
         if (!response.ok) {
@@ -23,9 +22,7 @@ function ProductPage() {
         setEditPrice(data.price);
       } catch (err) {
         setError(err.message);
-      } finally {
-        setLoading(false);
-      }
+      } 
     };
 
     fetchProduct();
@@ -56,8 +53,6 @@ function ProductPage() {
       setUpdateMessage("Failed to update price.");
     }
   };
-  if (loading)
-    return <p style={{ padding: "20px" }}>Loading product details...</p>;
   if (error) return <p style={{ padding: "20px" }}>Error: {error}</p>;
   if (!product) return <p style={{ padding: "20px" }}>Product not found.</p>;
 
