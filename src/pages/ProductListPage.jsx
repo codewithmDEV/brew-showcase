@@ -3,10 +3,12 @@ import { ProductContext } from "../context/ProductContext";
 import SearchBar from "../components/SearchBar";
 import ProductCard from "../components/ProductCard";
 import styles from "./ProductListPage.module.css";
+import { useAuth } from "../context/AuthContext";
 
 function ProductListPage() {
     const { products, loading, error } = useContext(ProductContext);
     const [filteredProducts, setFilteredProducts] = useState([]);
+    const { isAdmin } = useAuth();
 
     useEffect(() => {
         setFilteredProducts(products);
@@ -22,11 +24,20 @@ function ProductListPage() {
     return (
         <div className={styles.page}>
             <h1 className={styles.title}>Product List</h1>
+
+            {isAdmin && (
+                <button className={styles.addButton}>
+                    Add Product
+                </button>
+            )}
+
             <div className={styles.searchWrapper}>
                 <SearchBar onSearch={handleSearch} />
             </div>
+
             {loading && <p className={styles.statusText}>Loading...</p>}
             {error && <p className={styles.errorText}>Error: {error}</p>}
+
             <div className={styles.productGrid}>
                 {filteredProducts.length > 0 ? (
                     filteredProducts.map((product) => (
@@ -39,4 +50,5 @@ function ProductListPage() {
         </div>
     );
 }
+
 export default ProductListPage;

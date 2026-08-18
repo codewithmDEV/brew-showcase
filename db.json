@@ -13,14 +13,22 @@
       "name": "Vanilla Bean",
       "description": "Medium Roast, nutty flavor",
       "origin": "Colombia",
-      "price": 10
+      "price": 1000
     },
     {
       "id": "2",
       "name": "House Blend",
       "description": "Dark Roast, rich flavor",
       "origin": "Vietnam",
-      "price": 12
+      "price": 1200
+    },
+    {
+      "name": "espresso",
+      "description": "short black",
+      "origin": "vanilla bean",
+      "price": 1050,
+      "id": "Tar3SlAMGhE"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
