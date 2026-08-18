@@ -17,6 +17,8 @@ function App() {
         <Route path="/products" element={<ProductListPage />} />
         <Route path="/products/:id" element={<ProductPage />} />
         <Route path="/add-product" element={<AddProductPage />} />
+        <Route path="/signin" element={<SignInPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
       </Routes>
     </ProductContextProvider>
   );
