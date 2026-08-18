@@ -5,6 +5,8 @@ import ProductListPage from "./pages/ProductListPage";
 import ProductPage from "./pages/ProductPage";
 import AddProductPage from "./pages/AddProductPage";
 import ProductContextProvider from "./context/ProductContext";
+import SignInPage from "./pages/SignInPage";
+import SignUpPage from "./pages/SignUpPage";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
         <Route path="/products" element={<ProductListPage />} />
         <Route path="/products/:id" element={<ProductPage />} />
         <Route path="/add-product" element={<AddProductPage />} />
+        <Route path="/signin" element={<SignInPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
       </Routes>
     </ProductContextProvider>
   );

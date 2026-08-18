@@ -23,12 +23,11 @@
       "price": 1200
     },
     {
-      "name": "espresso",
+      "id": "3",
+      "name": "Espresso",
       "description": "short black",
       "origin": "vanilla bean",
-      "price": 1050,
-      "id": "Tar3SlAMGhE"
+      "price": 1050
     }
-  ],
-  "$schema": "./node_modules/json-server/schema.json"
+  ]
 }
