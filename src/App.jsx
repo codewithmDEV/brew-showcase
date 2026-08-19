@@ -6,8 +6,6 @@ import ProductPage from "./pages/ProductPage";
 import AddProductPage from "./pages/AddProductPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import LoginPage from "./pages/LoginPage";
-import SignInPage from "./pages/SignInPage";
-import SignUpPage from "./pages/SignUpPage";
 import ProductContextProvider from "./context/ProductContext";
 import { AuthProvider } from "./context/AuthContext";
 import AdminGuard from "./components/AdminGuard";
@@ -31,8 +29,6 @@ function App() {
           />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/signin" element={<SignInPage />} />
-          <Route path="/signup" element={<SignUpPage />} />
         </Routes>
       </ProductContextProvider>
     </AuthProvider>

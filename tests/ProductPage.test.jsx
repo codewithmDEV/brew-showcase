@@ -2,6 +2,7 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { MemoryRouter, Routes, Route } from "react-router-dom";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import ProductPage from "../src/pages/ProductPage";
+import { AuthProvider } from "../src/context/AuthContext";
 
 global.fetch = vi.fn();
 describe("ProductPage Component", () => {
@@ -23,11 +24,13 @@ describe("ProductPage Component", () => {
     });
 
     render(
-      <MemoryRouter initialEntries={["/products/1"]}>
-        <Routes>
-          <Route path="/products/:id" element={<ProductPage />} />
-        </Routes>
-      </MemoryRouter>,
+      <AuthProvider>
+        <MemoryRouter initialEntries={["/products/1"]}>
+          <Routes>
+            <Route path="/products/:id" element={<ProductPage />} />
+          </Routes>
+        </MemoryRouter>
+      </AuthProvider>,
     );
     expect(screen.getByText("Loading product details...")).toBeInTheDocument();
     await waitFor(() => {
@@ -49,11 +52,13 @@ describe("ProductPage Component", () => {
       });
 
     render(
-      <MemoryRouter initialEntries={["/products/1"]}>
-        <Routes>
-          <Route path="/products/:id" element={<ProductPage />} />
-        </Routes>
-      </MemoryRouter>,
+      <AuthProvider>
+        <MemoryRouter initialEntries={["/products/1"]}>
+          <Routes>
+            <Route path="/products/:id" element={<ProductPage />} />
+          </Routes>
+        </MemoryRouter>
+      </AuthProvider>,
     );
 
     await waitFor(() => {

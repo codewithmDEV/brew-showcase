@@ -39,4 +39,4 @@ function Navbar() {
   );
 }
 
-export default Navbar; // 👈 Only ONE export default at the end
+export default Navbar;

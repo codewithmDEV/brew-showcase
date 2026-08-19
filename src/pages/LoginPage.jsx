@@ -28,6 +28,7 @@ function LoginPage() {
         justifyContent: "center",
         background: "#f7f3eb",
         fontFamily: "system-ui, sans-serif",
+        padding: "1rem",
       }}
     >
       <div
@@ -46,7 +47,7 @@ function LoginPage() {
           Brew Showcase
         </h1>
         <p style={{ color: "#6b5a4a", marginBottom: "1.5rem", fontSize: "0.95rem" }}>
-          Sign In
+          Admin Login
         </p>
 
         <form onSubmit={handleSubmit}>
@@ -106,7 +107,7 @@ function LoginPage() {
             onMouseEnter={(e) => (e.target.style.background = "#6f4620")}
             onMouseLeave={(e) => (e.target.style.background = "#8b5a2b")}
           >
-            Sign In
+            Login
           </button>
 
           {error && (
@@ -115,10 +116,6 @@ function LoginPage() {
             </p>
           )}
         </form>
-
-        <p style={{ marginTop: "1rem", fontSize: "0.9rem" }}>
-          Don't have an account? <Link to="/signup" style={{ color: "#8b5a2b" }}>Sign Up</Link>
-        </p>
       </div>
     </div>
   );
