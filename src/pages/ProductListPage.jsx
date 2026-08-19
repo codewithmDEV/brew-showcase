@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
 import { ProductContext } from "../context/ProductContext";
 import SearchBar from "../components/SearchBar";
 import ProductCard from "../components/ProductCard";
@@ -29,12 +28,6 @@ function ProductListPage() {
   return (
     <div className={styles.page}>
       <h1 className={styles.title}>Product List</h1>
-
-      {isAdmin && (
-        <Link to="/add-product">
-          <button className={styles.addButton}>Add Product</button>
-        </Link>
-      )}
 
       <div className={styles.searchWrapper}>
         <SearchBar onSearch={handleSearch} />
