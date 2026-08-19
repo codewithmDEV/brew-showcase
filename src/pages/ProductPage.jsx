@@ -16,9 +16,7 @@ function ProductPage() {
       setError(null);
       try {
         const response = await fetch(`http://localhost:3000/products/${id}`);
-        if (!response.ok) {
-          throw new Error("Failed to fetch product details.");
-        }
+        if (!response.ok) throw new Error("Failed to fetch product details.");
         const data = await response.json();
         setProduct(data);
         setEditPrice(data.price);
@@ -26,27 +24,19 @@ function ProductPage() {
         setError(err.message);
       }
     };
-
     fetchProduct();
   }, [id]);
 
   const handlePatchPrice = async (e) => {
     e.preventDefault();
     setUpdateMessage("");
-
     try {
       const response = await fetch(`http://localhost:3000/products/${id}`, {
         method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ price: Number(editPrice) }),
       });
-
-      if (!response.ok) {
-        throw new Error("Failed to update product price.");
-      }
-
+      if (!response.ok) throw new Error("Failed to update product price.");
       const updatedProduct = await response.json();
       setProduct(updatedProduct);
       setIsEditing(false);
@@ -57,58 +47,140 @@ function ProductPage() {
     }
   };
 
-  if (error) return <p style={{ padding: "20px" }}>Error: {error}</p>;
-  if (!product) return <p style={{ padding: "20px" }}>Product not found.</p>;
+  if (error) return <p style={{ padding: "2rem", color: "#c0392b" }}>Error: {error}</p>;
+  if (!product) return <p style={{ padding: "2rem" }}>Product not found.</p>;
 
   return (
-    <main
-      className="product-page"
-      style={{ padding: "50px", color: "#4a2c2a", backgroundColor: "#e7d3b4" }}
-    >
-      <Link to="/products">← Back to Products</Link>
-      <h1>{product.name}</h1>
-      <p><strong>Origin:</strong> {product.origin}</p>
-      <p><strong>Description:</strong> {product.description}</p>
-      <p><strong>Current Price:</strong> KES {Number(product.price).toFixed(2)}</p>
+    <div style={{
+      minHeight: "100vh",
+      background: "#f7f3eb",
+      fontFamily: "system-ui, sans-serif",
+      padding: "2rem",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    }}>
+      <div style={{
+        background: "white",
+        padding: "2.5rem",
+        borderRadius: "24px",
+        boxShadow: "0 20px 60px rgba(0,0,0,0.08)",
+        maxWidth: "600px",
+        width: "100%",
+      }}>
+        <Link to="/products" style={{
+          display: "inline-block",
+          marginBottom: "1.5rem",
+          color: "#8b5a2b",
+          textDecoration: "none",
+          fontWeight: "500",
+        }}>
+          ← Back to Products
+        </Link>
 
-      {updateMessage && <p className="status-message">{updateMessage}</p>}
+        <h1 style={{
+          fontSize: "2.2rem",
+          margin: "0 0 0.5rem 0",
+          color: "#3e2c1b",
+        }}>
+          {product.name}
+        </h1>
 
-      {isAdmin && (
-        <>
-          {!isEditing ? (
-            <button onClick={() => setIsEditing(true)}>Edit Price</button>
-          ) : (
-            <form onSubmit={handlePatchPrice} style={{ marginTop: "15px" }}>
-              <div>
-                <label htmlFor="edit-price">New Price (KES): </label>
+        <p style={{ margin: "0.5rem 0", color: "#5a4a3a" }}>
+          <strong>Origin:</strong> {product.origin}
+        </p>
+        <p style={{ margin: "0.5rem 0", color: "#5a4a3a" }}>
+          <strong>Description:</strong> {product.description}
+        </p>
+        <p style={{
+          fontSize: "1.8rem",
+          fontWeight: "600",
+          color: "#6f4620",
+          margin: "1.5rem 0",
+        }}>
+          KES {Number(product.price).toFixed(2)}
+        </p>
+
+        {updateMessage && (
+          <p style={{
+            color: updateMessage.includes("success") ? "#2d7a4f" : "#c0392b",
+            margin: "0.5rem 0",
+          }}>
+            {updateMessage}
+          </p>
+        )}
+
+        {isAdmin && (
+          <>
+            {!isEditing ? (
+              <button onClick={() => setIsEditing(true)} style={{
+                padding: "0.7rem 1.5rem",
+                borderRadius: "12px",
+                border: "none",
+                background: "#8b5a2b",
+                color: "white",
+                fontWeight: "600",
+                cursor: "pointer",
+                transition: "background 0.2s",
+              }}
+              onMouseEnter={(e) => e.target.style.background = "#6f4620"}
+              onMouseLeave={(e) => e.target.style.background = "#8b5a2b"}>
+                Edit Price
+              </button>
+            ) : (
+              <form onSubmit={handlePatchPrice} style={{ marginTop: "1rem" }}>
+                <label style={{ fontWeight: "500", display: "block", marginBottom: "0.3rem" }}>
+                  New Price (KES):
+                </label>
                 <input
-                  id="edit-price"
                   type="number"
                   step="0.01"
                   min="0"
                   value={editPrice}
                   onChange={(e) => setEditPrice(e.target.value)}
                   required
+                  style={{
+                    padding: "0.7rem",
+                    borderRadius: "10px",
+                    border: "1px solid #ddd",
+                    width: "100%",
+                    marginBottom: "0.7rem",
+                    fontSize: "1rem",
+                  }}
                 />
-              </div>
-              <button
-                type="submit"
-                style={{ marginRight: "10px", marginTop: "10px", backgroundColor: "#8b3a3a" }}
-              >
-                Save Price
-              </button>
-              <button
-                type="button"
-                onClick={() => setIsEditing(false)}
-                style={{ backgroundColor: "#8b3a3a" }}
-              >
-                Cancel
-              </button>
-            </form>
-          )}
-        </>
-      )}
-    </main>
+                <button type="submit" style={{
+                  padding: "0.7rem 1.5rem",
+                  borderRadius: "12px",
+                  border: "none",
+                  background: "#2d7a4f",
+                  color: "white",
+                  fontWeight: "600",
+                  cursor: "pointer",
+                  marginRight: "0.5rem",
+                }}
+                onMouseEnter={(e) => e.target.style.background = "#1f5a3a"}
+                onMouseLeave={(e) => e.target.style.background = "#2d7a4f"}>
+                  Save Price
+                </button>
+                <button type="button" onClick={() => setIsEditing(false)} style={{
+                  padding: "0.7rem 1.5rem",
+                  borderRadius: "12px",
+                  border: "none",
+                  background: "#7a5a3a",
+                  color: "white",
+                  fontWeight: "600",
+                  cursor: "pointer",
+                }}
+                onMouseEnter={(e) => e.target.style.background = "#5a3a2a"}
+                onMouseLeave={(e) => e.target.style.background = "#7a5a3a"}>
+                  Cancel
+                </button>
+              </form>
+            )}
+          </>
+        )}
+      </div>
+    </div>
   );
 }
 
