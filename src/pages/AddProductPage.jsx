@@ -1,67 +1,41 @@
-import { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import ProductForm from '../components/ProductForm';
-import { ProductContext } from '../context/ProductContext';
-import styles from './AddProductPage.module.css';
+import { Link } from "react-router-dom";
 
-function AddProductPage() {
-  const [message, setMessage] = useState('');
-  const { refetchProducts } = useContext(ProductContext);
-  const navigate = useNavigate();
-
-  const handleAddProduct = async (product) => {
-    try {
-      const response = await fetch('http://localhost:3000/products', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(product),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to add product');
-      }
-
-      const newProduct = await response.json();
-      console.log('Product added:', newProduct);
-
-      // ✅ Refetch the product list so it updates immediately
-      await refetchProducts();
-
-      setMessage('Product added successfully!');
-
-      // ✅ Navigate back to products after a short delay
-      setTimeout(() => {
-        navigate('/products');
-      }, 1000);
-    } catch (error) {
-      console.error('Error adding product:', error);
-      setMessage('Failed to add product.');
-    }
-  };
-
+function SignUpPage() {
   return (
-    <main className={styles.page}>
-      <div className={styles.container}>
-        <h1 className={styles.title}>Add Product</h1>
-
-        <p className={styles.subtitle}>
-          Add a new coffee product to the Brew Showcase collection.
-        </p>
-
-        <div className={styles.formCard}>
-          <ProductForm onAddProduct={handleAddProduct} />
-
-          {message && (
-            <p className={styles.message}>
-              {message}
-            </p>
-          )}
-        </div>
-      </div>
-    </main>
+    <div style={{ padding: "2rem", maxWidth: "400px", margin: "0 auto" }}>
+      <h2>Sign Up</h2>
+      <form>
+        <input
+          type="email"
+          placeholder="Email"
+          required
+          style={{ display: "block", width: "100%", margin: "0.5rem 0", padding: "0.5rem" }}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          required
+          style={{ display: "block", width: "100%", margin: "0.5rem 0", padding: "0.5rem" }}
+        />
+        <button
+          type="submit"
+          style={{
+            padding: "0.7rem 1.5rem",
+            background: "#8b5a2b",
+            color: "white",
+            border: "none",
+            borderRadius: "8px",
+            cursor: "pointer",
+          }}
+        >
+          Sign Up
+        </button>
+      </form>
+      <p>
+        Already have an account? <Link to="/signin">Sign In</Link>
+      </p>
+    </div>
   );
 }
 
-export default AddProductPage;
+export default SignUpPage;

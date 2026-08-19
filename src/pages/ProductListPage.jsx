@@ -1,10 +1,10 @@
 import { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
 import { ProductContext } from "../context/ProductContext";
 import SearchBar from "../components/SearchBar";
 import ProductCard from "../components/ProductCard";
 import styles from "./ProductListPage.module.css";
 import { useAuth } from "../context/AuthContext";
-import { Link } from "react-router-dom";
 
 function ProductListPage() {
   const { products, loading, error } = useContext(ProductContext);

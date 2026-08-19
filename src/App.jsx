@@ -15,17 +15,26 @@ import AdminGuard from "./components/AdminGuard";
 function App() {
   return (
     <AuthProvider>
-    <ProductContextProvider>
-      <Navbar/>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/products" element={<ProductListPage />} />
-        <Route path="/products/:id" element={<ProductPage />} />
-        <Route path="/add-product" element={<AddProductPage />} />
-        <Route path="/signin" element={<SignInPage />} />
-        <Route path="/signup" element={<SignUpPage />} />
-      </Routes>
-    </ProductContextProvider>
+      <ProductContextProvider>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/products" element={<ProductListPage />} />
+          <Route path="/products/:id" element={<ProductPage />} />
+          <Route
+            path="/add-product"
+            element={
+              <AdminGuard>
+                <AddProductPage />
+              </AdminGuard>
+            }
+          />
+          <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signin" element={<SignInPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
+        </Routes>
+      </ProductContextProvider>
     </AuthProvider>
   );
 }
