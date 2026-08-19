@@ -1,39 +1,125 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 function SignInPage() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const { login } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const success = await login(email, password);
+    if (success) {
+      navigate("/products");
+    } else {
+      setError("Invalid email or password. Try again.");
+    }
+  };
+
   return (
-    <div style={{ padding: "2rem", maxWidth: "400px", margin: "0 auto" }}>
-      <h2>Sign In</h2>
-      <form>
-        <input
-          type="email"
-          placeholder="Email"
-          required
-          style={{ display: "block", width: "100%", margin: "0.5rem 0", padding: "0.5rem" }}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          required
-          style={{ display: "block", width: "100%", margin: "0.5rem 0", padding: "0.5rem" }}
-        />
-        <button
-          type="submit"
-          style={{
-            padding: "0.7rem 1.5rem",
-            background: "#8b5a2b",
-            color: "white",
-            border: "none",
-            borderRadius: "8px",
-            cursor: "pointer",
-          }}
-        >
+    <div
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "#f7f3eb",
+        fontFamily: "system-ui, sans-serif",
+      }}
+    >
+      <div
+        style={{
+          background: "white",
+          padding: "2.5rem",
+          borderRadius: "20px",
+          boxShadow: "0 20px 60px rgba(0,0,0,0.1)",
+          width: "100%",
+          maxWidth: "400px",
+          textAlign: "center",
+        }}
+      >
+        <div style={{ fontSize: "2.5rem", marginBottom: "0.5rem" }}>☕</div>
+        <h1 style={{ fontSize: "1.8rem", fontWeight: "600", margin: "0 0 0.25rem" }}>
+          Brew Showcase
+        </h1>
+        <p style={{ color: "#6b5a4a", marginBottom: "1.5rem", fontSize: "0.95rem" }}>
           Sign In
-        </button>
-      </form>
-      <p>
-        Don't have an account? <Link to="/signup">Sign Up</Link>
-      </p>
+        </p>
+
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            style={{
+              width: "100%",
+              padding: "0.9rem",
+              borderRadius: "12px",
+              border: "1px solid #ddd",
+              fontSize: "1rem",
+              marginBottom: "1rem",
+              outline: "none",
+              transition: "border 0.2s",
+            }}
+            onFocus={(e) => (e.target.style.border = "2px solid #8b5a2b")}
+            onBlur={(e) => (e.target.style.border = "1px solid #ddd")}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            style={{
+              width: "100%",
+              padding: "0.9rem",
+              borderRadius: "12px",
+              border: "1px solid #ddd",
+              fontSize: "1rem",
+              marginBottom: "1rem",
+              outline: "none",
+              transition: "border 0.2s",
+            }}
+            onFocus={(e) => (e.target.style.border = "2px solid #8b5a2b")}
+            onBlur={(e) => (e.target.style.border = "1px solid #ddd")}
+          />
+
+          <button
+            type="submit"
+            style={{
+              width: "100%",
+              padding: "0.9rem",
+              borderRadius: "12px",
+              border: "none",
+              background: "#8b5a2b",
+              color: "white",
+              fontSize: "1rem",
+              fontWeight: "600",
+              cursor: "pointer",
+              transition: "background 0.2s",
+            }}
+            onMouseEnter={(e) => (e.target.style.background = "#6f4620")}
+            onMouseLeave={(e) => (e.target.style.background = "#8b5a2b")}
+          >
+            Sign In
+          </button>
+
+          {error && (
+            <p style={{ color: "#c0392b", marginTop: "1rem", fontSize: "0.9rem" }}>
+              ⚠️ {error}
+            </p>
+          )}
+        </form>
+
+        <p style={{ marginTop: "1rem", fontSize: "0.9rem" }}>
+          Don't have an account? <Link to="/signup" style={{ color: "#8b5a2b" }}>Sign Up</Link>
+        </p>
+      </div>
     </div>
   );
 }

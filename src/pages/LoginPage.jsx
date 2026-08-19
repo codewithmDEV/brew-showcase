@@ -1,20 +1,21 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 function LoginPage() {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const success = login(password);
+    const success = await login(email, password);
     if (success) {
       navigate("/products");
     } else {
-      setError("Incorrect password. Try again.");
+      setError("Invalid email or password. Try again.");
     }
   };
 
@@ -45,15 +46,35 @@ function LoginPage() {
           Brew Showcase
         </h1>
         <p style={{ color: "#6b5a4a", marginBottom: "1.5rem", fontSize: "0.95rem" }}>
-          Admin Login
+          Sign In
         </p>
 
         <form onSubmit={handleSubmit}>
           <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            style={{
+              width: "100%",
+              padding: "0.9rem",
+              borderRadius: "12px",
+              border: "1px solid #ddd",
+              fontSize: "1rem",
+              marginBottom: "1rem",
+              outline: "none",
+              transition: "border 0.2s",
+            }}
+            onFocus={(e) => (e.target.style.border = "2px solid #8b5a2b")}
+            onBlur={(e) => (e.target.style.border = "1px solid #ddd")}
+          />
+          <input
             type="password"
-            placeholder="Enter admin password"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
             style={{
               width: "100%",
               padding: "0.9rem",
@@ -85,7 +106,7 @@ function LoginPage() {
             onMouseEnter={(e) => (e.target.style.background = "#6f4620")}
             onMouseLeave={(e) => (e.target.style.background = "#8b5a2b")}
           >
-            Login
+            Sign In
           </button>
 
           {error && (
@@ -94,6 +115,10 @@ function LoginPage() {
             </p>
           )}
         </form>
+
+        <p style={{ marginTop: "1rem", fontSize: "0.9rem" }}>
+          Don't have an account? <Link to="/signup" style={{ color: "#8b5a2b" }}>Sign Up</Link>
+        </p>
       </div>
     </div>
   );

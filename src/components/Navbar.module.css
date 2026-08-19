@@ -10,10 +10,10 @@
   max-width: 1200px;
   min-height: 75px;
   margin: 0 auto;
-
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end; /* 👈 moves everything to the right */
+  gap: 2rem;
 }
 
 .brand {
@@ -21,15 +21,14 @@
   color: #6b1e2e;
   font-size: 26px;
   font-weight: 800;
-}
-
-.brand:hover {
-  color: #4e1420;
+  white-space: nowrap;
+  margin-right: auto; /* 👈 keeps brand on the left */
 }
 
 .links {
   display: flex;
   gap: 30px;
+  align-items: center;
 }
 
 .link {
@@ -37,9 +36,31 @@
   color: #4a3428;
   font-size: 16px;
   font-weight: 600;
+  transition: color 0.2s;
 }
 
 .link:hover {
+  color: #8b2f3f;
+}
+
+.authLinks {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logoutButton {
+  background: none;
+  border: none;
+  color: #4a3428;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.logoutButton:hover {
   color: #8b2f3f;
 }
 
@@ -50,11 +71,23 @@
 
   .navContainer {
     flex-direction: column;
+    align-items: stretch;
     gap: 15px;
     padding: 18px 0;
   }
 
+  .brand {
+    margin-right: 0;
+    text-align: center;
+  }
+
   .links {
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 18px;
+  }
+
+  .authLinks {
+    justify-content: center;
   }
 }

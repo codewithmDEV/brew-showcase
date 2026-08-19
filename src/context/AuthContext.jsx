@@ -7,18 +7,30 @@ export function AuthProvider({ children }) {
     return localStorage.getItem("isAdmin") === "true";
   });
 
-  const login = (password) => {
-    if (password === "admin123") {
-      setIsAdmin(true);
-      localStorage.setItem("isAdmin", "true");
-      return true;
+  const login = async (email, password) => {
+    try {
+      const response = await fetch("http://localhost:3000/users");
+      const users = await response.json();
+      const user = users.find(
+        (u) => u.email === email && u.password === password
+      );
+      if (user) {
+        setIsAdmin(true);
+        localStorage.setItem("isAdmin", "true");
+        localStorage.setItem("userEmail", email);
+        return true;
+      }
+      return false;
+    } catch (error) {
+      console.error("Login error:", error);
+      return false;
     }
-    return false;
   };
 
   const logout = () => {
     setIsAdmin(false);
     localStorage.removeItem("isAdmin");
+    localStorage.removeItem("userEmail");
   };
 
   return (
