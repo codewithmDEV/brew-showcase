@@ -1,6 +1,6 @@
 # Brew Showcase ☕
 
-An admin portal for an e-commerce coffee store, built as a React-based Single Page Application (SPA). Administrators can view, search, add, and edit coffee products through a simulated backend.
+An admin portal for an e-commerce coffee store, built as a React-based Single Page Application (SPA). Administrators can log in to view, search, add, edit, and delete coffee products, and place orders through checkout — all backed by a simulated backend.
 
 ## Features
 
@@ -8,9 +8,13 @@ An admin portal for an e-commerce coffee store, built as a React-based Single Pa
 - **Product list** with live search/filtering by product name
 - **Add Product** form to create new coffee listings
 - **Product detail page** with price editing (PATCH)
+- **Delete product** via a delete button on each product card
+- **Checkout page** for placing an order
+- **Admin authentication** — login/logout with a hardcoded admin password; login state is tracked in `db.json`
+- **Role-based access control** — only logged-in admins can add, edit, or delete products
 - **Client-side routing** between all pages (React Router)
 - **State management** via `useState`, `useContext`, `useEffect`, `useRef`, and a custom hook (`useProducts`)
-- **Simulated backend** using `json-server` and `db.json`, supporting GET, POST, and PATCH requests
+- **Simulated backend** using `json-server` and `db.json`, supporting GET, POST, PATCH, and DELETE requests
 - **Component tests** written with Vitest and React Testing Library
 - **Responsive, styled UI** with a cream and burgundy coffee-shop theme
 
@@ -68,20 +72,20 @@ npm run test
 ```
 src/
 ├── components/       # Reusable UI components (Navbar, SearchBar, ProductCard, ProductForm)
-├── pages/             # Route-level pages (Landing, ProductList, ProductPage, AddProductPage)
+├── pages/             # Route-level pages (Landing, ProductList, ProductPage, AddProductPage, Checkout, Login)
 ├── hooks/             # Custom hooks (useProducts)
-├── context/           # React Context for shared product state
+├── context/           # React Context for shared product/auth state
 ├── styles/            # Shared/global styles
 tests/                 # Component test files
-db.json                # Simulated backend data
+db.json                # Simulated backend data (products, store info, admin login state)
 ```
 
 ## Known Limitations
 
 - Product data (`db.json`) is served locally per machine via `json-server`; changes made by one team member's local server (e.g. adding a test product) do not automatically sync to teammates unless committed and pushed to the repository.
+- Admin authentication uses a hardcoded password and stores login state in `db.json` — this is a lab-level demonstration of access control, not production-grade security (no password hashing, no real user accounts, no session expiry).
 - Prices are stored/entered and converted between currencies; ensure consistent currency handling when adding new products.
-- No authentication — this is an internal admin demo, not a production-secured application.
 
 ## Team
 
-Built by a 4-person team as part of a Summative Lab covering advanced React concepts: state management, routing, data fetching, and testing.
+Built by a 4-person team as part of a Summative Lab covering advanced React concepts: state management, routing, data fetching, authentication, and testing.
