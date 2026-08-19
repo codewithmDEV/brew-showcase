@@ -8,7 +8,9 @@ import CheckoutPage from "./pages/CheckoutPage";
 import LoginPage from "./pages/LoginPage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
+import ProductContextProvider from "./context/ProductContext";
 import { AuthProvider } from "./context/AuthContext";
+import AdminGuard from "./components/AdminGuard";
 
 function App() {
   return (
