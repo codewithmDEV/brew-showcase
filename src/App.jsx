@@ -7,9 +7,11 @@ import AddProductPage from "./pages/AddProductPage";
 import ProductContextProvider from "./context/ProductContext";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
+import { AuthProvider } from "./context/AuthContext";
 
 function App() {
   return (
+    <AuthProvider>
     <ProductContextProvider>
       <Navbar/>
       <Routes>
@@ -21,6 +23,7 @@ function App() {
         <Route path="/signup" element={<SignUpPage />} />
       </Routes>
     </ProductContextProvider>
+    </AuthProvider>
   );
 }
 
